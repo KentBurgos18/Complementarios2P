@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    container_name: horario-practica
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - database
+    volumes:
+      - .:/usr/src/app
+  database:
+    container_name: mongo-practica
+    image: mongo
+    command: --quiet --logpath /dev/null
